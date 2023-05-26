@@ -23,7 +23,7 @@ export const Total = ({ form }) => {
 
   const handleSubmit = async (data) => {
     try {
-      await fetch(process.env.PUBLIC_URL + "/api/order", {
+      await fetch("/api/order", {
         method: "POST",
         body: JSON.stringify({ ...data, items: cartItems }),
         headers: {

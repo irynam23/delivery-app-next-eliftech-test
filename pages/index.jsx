@@ -34,10 +34,14 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx) => {
   try {
     await clientPromise;
-    const res = await fetch(process.env.PUBLIC_URL + "/api/goods");
+    const res = await fetch(
+      process.env.NODE_ENV === "development"
+        ? `http://${ctx.req?.headers.host}/api/goods`
+        : `https://${ctx.req?.headers.host}/api/goods`
+    );
     const goods = await res.json();
 
     const shops = goods
