@@ -8,7 +8,7 @@ import {
 import { CartContext } from "../../lib/context";
 
 export const Total = ({ form }) => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, clearCart } = useContext(CartContext);
 
   const [domLoaded, setDomLoaded] = useState(false);
 
@@ -32,6 +32,7 @@ export const Total = ({ form }) => {
         },
       });
       form.reset();
+      clearCart();
     } catch (error) {
       console.error(error);
     }
