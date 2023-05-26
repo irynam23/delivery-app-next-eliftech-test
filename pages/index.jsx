@@ -37,7 +37,7 @@ const StyledWrapper = styled.div`
 export const getServerSideProps = async () => {
   try {
     await clientPromise;
-    const res = await fetch("/api/goods");
+    const res = await fetch(process.env.PUBLIC_URL + "/api/goods");
     const goods = await res.json();
 
     const shops = goods
